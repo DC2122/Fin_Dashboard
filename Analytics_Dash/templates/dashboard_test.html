@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, {{ username }}</h1>
+    
+    <!-- Form to add a new stock -->
+    <form method="POST">
+        <input type="text" name="stock_name" placeholder="Stock Name" required>
+        <input type="text" name="stock_ticker" placeholder="Ticker" required>
+        <button type="submit">Add Stock</button>
+    </form>
+    
+    <h2>Your Stocks</h2>
+    <ul>
+        {% for stock in stocks %}
+            <li>
+                <strong>{{ stock.name }} ({{ stock.ticker }})</strong>
+                <div>
+                    <h3>Price History</h3>
+                    <img src="{{ visualizations[stock.name]['price_plot'] }}" alt="Price History for {{ stock.name }}">
+                </div>
+                <div>
+                    <h3>Volume History</h3>
+                    <img src="{{ visualizations[stock.name]['volume_plot'] }}" alt="Volume History for {{ stock.name }}">
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>
