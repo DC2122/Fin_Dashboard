@@ -3,35 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Dashboard</title>
+    <title>Financial Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        .welcome-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .form-section {
+            background: #fff;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        .form-section form {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .form-section input, .form-section button {
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-section button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .stocks-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .stock-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+        }
+        .stock-card h3 {
+            color: #007bff;
+        }
+        .stock-card img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #f1f1f1;
+            margin-top: 2rem;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome, {{ username }}</h1>
-    
-    <!-- Form to add a new stock -->
-    <form method="POST">
-        <input type="text" name="stock_name" placeholder="Stock Name" required>
-        <input type="text" name="stock_ticker" placeholder="Ticker" required>
-        <button type="submit">Add Stock</button>
-    </form>
-    
-    <h2>Your Stocks</h2>
-    <ul>
-        {% for stock in stocks %}
-            <li>
-                <strong>{{ stock.name }} ({{ stock.ticker }})</strong>
+    <header>
+        <h1>Welcome to Your Financial Dashboard</h1>
+    </header>
+
+    <div class="container">
+        <div class="welcome-section">
+            <h2>Hello, {{ username }} 👋</h2>
+            <p>Track and visualize your stock investments in real-time.</p>
+        </div>
+
+        <div class="form-section">
+            <h3>Add a New Stock</h3>
+            <form method="POST">
+                <input type="text" name="stock_name" placeholder="Stock Name" required>
+                <input type="text" name="stock_ticker" placeholder="Ticker" required>
+                <button type="submit">Add Stock</button>
+            </form>
+        </div>
+
+        <section class="stocks-section">
+            {% for stock in stocks %}
+            <div class="stock-card">
+                <h3>{{ stock.name }} ({{ stock.ticker }})</h3>
                 <div>
-                    <h3>Price History</h3>
+                    <h4>Price History</h4>
                     <img src="{{ visualizations[stock.name]['price_plot'] }}" alt="Price History for {{ stock.name }}">
                 </div>
                 <div>
-                    <h3>Volume History</h3>
+                    <h4>Volume History</h4>
                     <img src="{{ visualizations[stock.name]['volume_plot'] }}" alt="Volume History for {{ stock.name }}">
                 </div>
-            </li>
-        {% endfor %}
-    </ul>
+            </div>
+            {% endfor %}
+        </section>
+    </div>
 
-    <a href="{{ url_for('index') }}">Back to Home</a>
+    <footer>
+        <p>&copy; 2024 Your Dashboard. All Rights Reserved.</p>
+        <a href="{{ url_for('index') }}">Back to Home</a>
+    </footer>
 </body>
 </html>

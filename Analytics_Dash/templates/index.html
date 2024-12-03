@@ -1,10 +1,119 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Financial App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            background-color: #f4f6f9;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1.5rem 1rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .hero {
+            background: url('financial-dashboard-bg.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .hero a {
+            text-decoration: none;
+            padding: 0.8rem 2rem;
+            color: white;
+            background-color: #333;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .features {
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+        .feature {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .feature img {
+            max-width: 100px;
+            margin-bottom: 1rem;
+        }
+        .feature h3 {
+            margin-bottom: 0.5rem;
+            color: #4CAF50;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #333;
+            color: white;
+        }
+        footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to the Financial Analytics App</h1>
-    <a href="/register">Register</a> | <a href="/login">Login</a>
+    <header>
+        <h1>Financial Analytics Dashboard</h1>
+    </header>
+
+    <div class="hero">
+        <h2>Empower Your Financial Journey</h2>
+        <p>Track, analyze, and grow your investments with our comprehensive tools and real-time insights.</p>
+        <a href="/register">Get Started</a>
+    </div>
+
+    <section class="features">
+        <div class="feature">
+            <img src="stock-trends-icon.png" alt="Stock Trends">
+            <h3>Stock Trends</h3>
+            <p>Analyze stock performance with real-time charts and historical data.</p>
+        </div>
+        <div class="feature">
+            <img src="portfolio-management-icon.png" alt="Portfolio Management">
+            <h3>Portfolio Management</h3>
+            <p>Keep track of your investments and optimize your portfolio.</p>
+        </div>
+        <div class="feature">
+            <img src="market-insights-icon.png" alt="Market Insights">
+            <h3>Market Insights</h3>
+            <p>Stay updated with the latest financial news and market trends.</p>
+        </div>
+        <div class="feature">
+            <img src="risk-analysis-icon.png" alt="Risk Analysis">
+            <h3>Risk Analysis</h3>
+            <p>Evaluate the risks and rewards of your investment strategies.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Financial Analytics Dashboard. All Rights Reserved. <a href="/terms">Terms of Service</a></p>
+    </footer>
 </body>
 </html>

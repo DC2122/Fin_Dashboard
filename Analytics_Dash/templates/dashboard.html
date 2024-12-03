@@ -3,35 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Dashboard</title>
+    <title>Financial Insights</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #333;
+            background-color: #f9fafb;
+        }
+        header {
+            background-color: #4CAF50;
+            padding: 1rem;
+            text-align: center;
+            color: white;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: url('hero-bg.jpg') no-repeat center center/cover;
+            color: white;
+            padding: 3rem 1rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+        .hero-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .hero-section button {
+            padding: 1rem 2rem;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .features-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .feature-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .feature-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .feature-card h3 {
+            margin: 1rem 0;
+            color: #4CAF50;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #333;
+            color: white;
+        }
+        footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome, {{ username }}</h1>
-    
-    <!-- Form to add a new stock -->
-    <form method="POST">
-        <input type="text" name="stock_name" placeholder="Stock Name" required>
-        <input type="text" name="stock_ticker" placeholder="Ticker" required>
-        <button type="submit">Add Stock</button>
-    </form>
-    
-    <h2>Your Stocks</h2>
-    <ul>
-        {% for stock in stocks %}
-            <li>
-                <strong>{{ stock.name }} ({{ stock.ticker }})</strong>
-                <div>
-                    <h3>Price History</h3>
-                    <img src="{{ url_for('static', filename='visualizations/HistoricalPrices.png') }}" alt="Price History for {{ stock.name }}">
-                </div>
-                <div>
-                    <h3>Volume History</h3>
-                    <img src="{{ url_for('static', filename='visualizations/HistoricalVolume.png') }}" alt="Volume History for {{ stock.name }}">
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
+    <header>
+        <h1>Financial Insights</h1>
+        <p>Your one-stop platform for smarter financial decisions</p>
+    </header>
 
-    <a href="{{ url_for('index') }}">Back to Home</a>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div>
+                <h1>Welcome to Your Financial Dashboard</h1>
+                <p>Analyze your stocks, track trends, and gain insights with interactive charts and data.</p>
+                <button onclick="location.href='{{ url_for('dashboard') }}'">Get Started</button>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <div class="feature-card">
+                <img src="{{ url_for('static', filename='images/stock_analysis.jpg') }}" alt="Stock Analysis">
+                <h3>Stock Analysis</h3>
+                <p>Monitor stock performance with real-time price and volume charts.</p>
+            </div>
+            <div class="feature-card">
+                <img src="{{ url_for('static', filename='images/portfolio_management.jpg') }}" alt="Portfolio Management">
+                <h3>Portfolio Management</h3>
+                <p>Keep track of your investments and manage your portfolio efficiently.</p>
+            </div>
+            <div class="feature-card">
+                <img src="{{ url_for('static', filename='images/market_trends.jpg') }}" alt="Market Trends">
+                <h3>Market Trends</h3>
+                <p>Stay updated with the latest market trends and insights.</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Financial Insights. All Rights Reserved. <a href="#">Privacy Policy</a></p>
+    </footer>
 </body>
 </html>
